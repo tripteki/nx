@@ -1,0 +1,3120 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Application",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "api"
+        }
+    ],
+    "paths": {
+        "/acls": {
+            "get": {
+                "tags": [
+                    "ACLs"
+                ],
+                "summary": "Index",
+                "operationId": "472fd0f9f8b07d4b4f7be1ed8d02e2cf",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Sign in",
+                "operationId": "379cd69c0d46662819548f4c1f366ee7",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User's Email.",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's Password.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Sign out",
+                "operationId": "5fb0288e318b95a9481d63371186b083",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/refresh": {
+            "put": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresh token",
+                "operationId": "aafa0b37bba7f93b165d82b639725ed7",
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "304": {
+                        "description": "Not Modified."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/me": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Me",
+                "operationId": "f44fda3329b2bcd035ae9ae79673ddbb",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/email/verification-notification": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Re-Verification",
+                "operationId": "fb798fdae9f8c5d56f9dc7ec5edc81da",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/reset-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Reset credential",
+                "operationId": "a618d9ad2c9b5a7e14325ff710bbdd60",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "token": {
+                                        "description": "Reset's Token.",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's Email.",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's Password.",
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "User's Password Confirmation.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/auth/forgot-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Send credential reset link",
+                "operationId": "84506bf23df43b2755f9130b3fb23faf",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User's Email.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Registration",
+                "operationId": "99aae8eff8d8865e68b8eef4089deafa",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's Name.",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's Email.",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's Password.",
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "User's Password Confirmation.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "202": {
+                        "description": "Accepted."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/{context}/{object}": {
+            "put": {
+                "tags": [
+                    "Admin ACL Rule"
+                ],
+                "summary": "rule",
+                "operationId": "a6e656fc1da95e96a17116b10eb42b50",
+                "parameters": [
+                    {
+                        "name": "context",
+                        "in": "path",
+                        "description": "ACL's Context.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "grant_permissions_to_role",
+                                "revoke_permissions_from_role",
+                                "grant_roles_to_user",
+                                "revoke_roles_from_user"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "object",
+                        "in": "path",
+                        "description": "ACL's Object.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "rules[]": {
+                                        "description": "ACL's Rules.",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "collectionFormat": "multi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/acls/permissions": {
+            "get": {
+                "tags": [
+                    "Admin ACL Permission"
+                ],
+                "summary": "Index",
+                "operationId": "430dbea3dd084776e39004197d274855",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "ACL Permission's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "ACL Permission's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "ACL Permission's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "ACL Permission's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin ACL Permission"
+                ],
+                "summary": "Store",
+                "operationId": "c2f262c981639767ca88df9c9623ed94",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "permission": {
+                                        "description": "ACL Permission's Permission.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/permissions/{permission}": {
+            "get": {
+                "tags": [
+                    "Admin ACL Permission"
+                ],
+                "summary": "Show",
+                "operationId": "38aba4bca62caf5f5dadbac87348a2e1",
+                "parameters": [
+                    {
+                        "name": "permission",
+                        "in": "path",
+                        "description": "ACL Permission's Permission.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin ACL Permission"
+                ],
+                "summary": "Destroy",
+                "operationId": "c810d0db2b1228d7b2ad742d5275f75b",
+                "parameters": [
+                    {
+                        "name": "permission",
+                        "in": "path",
+                        "description": "ACL Permission's Permission.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/acls/permissions-import": {
+            "post": {
+                "tags": [
+                    "Admin ACL Permission"
+                ],
+                "summary": "Import",
+                "operationId": "a3e524834fc128305c5feb6c1c1d9e5f",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Permission's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/permissions-export": {
+            "get": {
+                "tags": [
+                    "Admin ACL Permission"
+                ],
+                "summary": "Export",
+                "operationId": "d34726ffde8e02dc242598e2c7b8b9c9",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Permission's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/roles": {
+            "get": {
+                "tags": [
+                    "Admin ACL Role"
+                ],
+                "summary": "Index",
+                "operationId": "3a19b23c09a54b97c20b9d98cba1d3c6",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "ACL Role's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "ACL Role's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "ACL Role's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "ACL Role's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin ACL Role"
+                ],
+                "summary": "Store",
+                "operationId": "b50739e5f72118c1a97be54767fad8c3",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "role": {
+                                        "description": "ACL Role's Role.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/roles/{role}": {
+            "get": {
+                "tags": [
+                    "Admin ACL Role"
+                ],
+                "summary": "Show",
+                "operationId": "560b68ca25519259621eca75a5fc2a19",
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "description": "ACL Role's Role.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin ACL Role"
+                ],
+                "summary": "Destroy",
+                "operationId": "56e61df6b13fd0797fb4030b5aa52f46",
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "description": "ACL Role's Role.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/acls/roles-import": {
+            "post": {
+                "tags": [
+                    "Admin ACL Role"
+                ],
+                "summary": "Import",
+                "operationId": "f149fbd1e5c552010f26a87f59183d6f",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Role's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/roles-export": {
+            "get": {
+                "tags": [
+                    "Admin ACL Role"
+                ],
+                "summary": "Export",
+                "operationId": "ce512726c5bcc3d293aae7f6a1f0372e",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Role's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/acls/users/{user}": {
+            "get": {
+                "tags": [
+                    "Admin ACL User"
+                ],
+                "summary": "Show",
+                "operationId": "ca5d8c6f73f5ac12c8aa907d82d17cfe",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ACL User's User.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/logs": {
+            "get": {
+                "tags": [
+                    "Admin Log"
+                ],
+                "summary": "Index",
+                "operationId": "e639bff8c05011db6ea596f888120fe4",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Log's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Log's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Log's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Log's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            }
+        },
+        "/admin/logs/{log}": {
+            "get": {
+                "tags": [
+                    "Admin Log"
+                ],
+                "summary": "Show",
+                "operationId": "48190927fa11119c90a618c5bd8b3340",
+                "parameters": [
+                    {
+                        "name": "log",
+                        "in": "path",
+                        "description": "Log's Log.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/logs-export": {
+            "get": {
+                "tags": [
+                    "Admin Log"
+                ],
+                "summary": "Export",
+                "operationId": "c8f88343dcaeda9460a6841dbe19e478",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Log's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/notifications": {
+            "get": {
+                "tags": [
+                    "Admin Notification"
+                ],
+                "summary": "Index",
+                "operationId": "530f31d9fb349e22be32be3b358a6ad3",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Notification's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Notification's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Notification's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Notification's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            }
+        },
+        "/admin/notifications/{notification}": {
+            "get": {
+                "tags": [
+                    "Admin Notification"
+                ],
+                "summary": "Show",
+                "operationId": "4824b23438f8388d9da839156b40846a",
+                "parameters": [
+                    {
+                        "name": "notification",
+                        "in": "path",
+                        "description": "Notification's Notification.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/notifications-export": {
+            "get": {
+                "tags": [
+                    "Admin Notification"
+                ],
+                "summary": "Export",
+                "operationId": "e14b3a201c54c7b0e84330a2f487df94",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Notification's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages": {
+            "get": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Index",
+                "operationId": "4dd5f44d54f927a8e535727c25054427",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Locale Language's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Locale Language's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Locale Language's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Locale Language's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Store",
+                "operationId": "40d172e7b83003bdf1a9b4550f970867",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "description": "Locale Language's Code.",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "description": "Locale Language's Locale.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages/{code}": {
+            "get": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Show",
+                "operationId": "bc0187d813c2959cbac1ba1b2b443708",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Update",
+                "operationId": "a125f865dcc6f9b33a870ef5d723839c",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "locale": {
+                                        "description": "Locale Language's Locale.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Destroy",
+                "operationId": "8111aa868e8cc08f7b9e4ec606cf184b",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages-import": {
+            "post": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Import",
+                "operationId": "08e7b300afb68bef5bc58d10113c3587",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Locale Language's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages-export": {
+            "get": {
+                "tags": [
+                    "Admin Locale Language"
+                ],
+                "summary": "Export",
+                "operationId": "012935fb4d80ec675d7c5d78227c9b51",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Locale Language's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages/{code}/translations": {
+            "get": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Index",
+                "operationId": "72a2be3c56bc9fd083816ecf1ae905e2",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Locale Translation's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Locale Translation's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Locale Translation's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Locale Translation's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Store",
+                "operationId": "f010520ce2cb49c4c868c316a1486011",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "key": {
+                                        "description": "Locale Translation's Key.",
+                                        "type": "string"
+                                    },
+                                    "translate": {
+                                        "description": "Locale Translation's Translate.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages/{code}/translations/{key}": {
+            "get": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Show",
+                "operationId": "0e9a35d44105e342596c34865e434da1",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    },
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Locale Language's Key.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Update",
+                "operationId": "bb6ec7a53963307a43e0981b5c520e3b",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    },
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Locale Language's Key.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "key": {
+                                        "description": "Locale Translation's Key.",
+                                        "type": "string"
+                                    },
+                                    "translate": {
+                                        "description": "Locale Translation's Translate.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Destroy",
+                "operationId": "2d631e9275c46bb316db223f68fc00fb",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    },
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Locale Language's Key.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages/{code}/translations-import": {
+            "post": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Import",
+                "operationId": "dc533fb4e1488d5a9a13f728f2a11c94",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Locale Translation's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/locales/languages/{code}/translations-export": {
+            "get": {
+                "tags": [
+                    "Admin Locale Translation"
+                ],
+                "summary": "Export",
+                "operationId": "a0fbc6abf700009663f168432c3b7d35",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Locale Language's Code.",
+                        "required": true
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Locale Translation's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/bars/{bar}/menus": {
+            "get": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Index",
+                "operationId": "cfb739387240a5328403c98286412489",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "path",
+                        "description": "Menu's Bar.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "headernavbar",
+                                "sidenavbar"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Menu's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Menu's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Menu's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Menu's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Store",
+                "operationId": "f2940d1437907660df53a7e879942c67",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "path",
+                        "description": "Menu's Bar.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "headernavbar",
+                                "sidenavbar"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "menu": {
+                                        "description": "Menu's Menu.",
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "description": "Menu's Category.",
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "description": "Menu's Icon.",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "description": "Menu's Title.",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Menu's Description.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/bars/{bar}/menus/{menu}": {
+            "get": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Show",
+                "operationId": "92e80041f596572a1ec5a89d82c618b4",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "path",
+                        "description": "Menu's Bar.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "headernavbar",
+                                "sidenavbar"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "menu",
+                        "in": "path",
+                        "description": "Menu's Menu.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Update",
+                "operationId": "96ce53ee918ddce49c229167802dfdb5",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "path",
+                        "description": "Menu's Bar.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "headernavbar",
+                                "sidenavbar"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "menu",
+                        "in": "path",
+                        "description": "Menu's Menu.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "category": {
+                                        "description": "Menu's Category.",
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "description": "Menu's Icon.",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "description": "Menu's Title.",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Menu's Description.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Destroy",
+                "operationId": "5965f06332527006ba3af02a227f7ef4",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "path",
+                        "description": "Menu's Bar.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "headernavbar",
+                                "sidenavbar"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "menu",
+                        "in": "path",
+                        "description": "Menu's Menu.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/menus-import": {
+            "post": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Import",
+                "operationId": "e141905ed9d9ff72f9b5b63f4b4e9ca1",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Menu's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/menus-export": {
+            "get": {
+                "tags": [
+                    "Admin Menu"
+                ],
+                "summary": "Export",
+                "operationId": "96275d8e55f9765f23e9f4937d29ad26",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Menu's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/profiles": {
+            "get": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Index",
+                "operationId": "51ba1b89a63e1cfe04a02bf3550a2dab",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Profile's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Profile's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Profile's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Profile's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Store",
+                "operationId": "0a67fddc27bc1c03b9c26f0a198da0b3",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "variable": {
+                                        "description": "Profile's Variable.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "Profile's Value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/profiles/{variable}": {
+            "get": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Show",
+                "operationId": "4a8e916040b69b086b16c09d247e70da",
+                "parameters": [
+                    {
+                        "name": "variable",
+                        "in": "path",
+                        "description": "Profile's Variable.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Update",
+                "operationId": "1ab4689d7a6d6cfccf96a68a8b73c44a",
+                "parameters": [
+                    {
+                        "name": "variable",
+                        "in": "path",
+                        "description": "Profile's Variable.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Profile's Value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Destroy",
+                "operationId": "48fd68efaf01e019543220b9ac25a00e",
+                "parameters": [
+                    {
+                        "name": "variable",
+                        "in": "path",
+                        "description": "Profile's Variable.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/profiles-import": {
+            "post": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Import",
+                "operationId": "5bc4445a701cc823d881bd21f2393c6b",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Profile's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/profiles-export": {
+            "get": {
+                "tags": [
+                    "Admin Profile"
+                ],
+                "summary": "Export",
+                "operationId": "35e72c3758bbbc4fd19f0be2cbac6504",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Profile's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/settings": {
+            "get": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Index",
+                "operationId": "c4889cf7a576514ad305b7767892efa0",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Setting's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Setting's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Setting's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Setting's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Store",
+                "operationId": "e548d3c5162f2a89aae139dcdf39b55f",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "key": {
+                                        "description": "Setting's Key.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "Setting's Value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/settings/{key}": {
+            "get": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Show",
+                "operationId": "402a8776fc01a08f01f0258cf72c31d8",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Setting's Key.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Update",
+                "operationId": "8203fdcbb7c90261301b5b761e15b3cf",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Setting's Key.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Setting's Value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Destroy",
+                "operationId": "2d769a21b2b7585780eb4e4eb28a38cd",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Setting's Key.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/settings-import": {
+            "post": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Import",
+                "operationId": "6e1c83dedf02c212c6e7ceec0740bc8f",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Setting's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/settings-export": {
+            "get": {
+                "tags": [
+                    "Admin Setting"
+                ],
+                "summary": "Export",
+                "operationId": "b1adfc1e2ddb2c65917b995a64508bbf",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "Setting's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/users": {
+            "get": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Index",
+                "operationId": "e920924fbb159b7ddc3be0a9e6590877",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "User's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "User's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "User's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "User's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Store",
+                "operationId": "e8d894b681323a1d9bc72c0ed2ca9081",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's Name.",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's Email.",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's Password.",
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "User's Password Confirmation.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/users/{identifier}": {
+            "get": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Show",
+                "operationId": "f87073bae078e96e3ac9f108508169a8",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "User's Identifier.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Update",
+                "operationId": "ec80df5ea52cff5d491452a57a4ddbbe",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "User's Identifier.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's Name.",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's Email.",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's Password.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Destroy",
+                "operationId": "21953c3021e53df38c30d4cfdd88103b",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "description": "User's Identifier.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                }
+            }
+        },
+        "/admin/users-import": {
+            "post": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Import",
+                "operationId": "b3903ebe0edd87bd19819b9d721a3586",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "User's File.",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/admin/users-export": {
+            "get": {
+                "tags": [
+                    "Admin User"
+                ],
+                "summary": "Export",
+                "operationId": "e577e8d5a11693d33186c17c013fb3a2",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "User's File.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "csv",
+                                "xls",
+                                "xlsx"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/logs": {
+            "get": {
+                "tags": [
+                    "Logs"
+                ],
+                "summary": "Index",
+                "operationId": "6ec00ab6bf231b6032c64e97a6160145",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Log's Type.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "archived",
+                                "unarchived"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Log's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Log's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Log's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Log's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/logs/{log}": {
+            "get": {
+                "tags": [
+                    "Logs"
+                ],
+                "summary": "Show",
+                "operationId": "104a652f9a378bbd10fe4af9a38c779b",
+                "parameters": [
+                    {
+                        "name": "log",
+                        "in": "path",
+                        "description": "Log's Log.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/logs/{context}": {
+            "put": {
+                "tags": [
+                    "Logs"
+                ],
+                "summary": "Update",
+                "operationId": "85364b1139511c6c4638055eeb0584ab",
+                "parameters": [
+                    {
+                        "name": "context",
+                        "in": "path",
+                        "description": "Log's Context.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "archive",
+                                "unarchive"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "logs": {
+                                        "description": "Log's Logs.",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/notifications": {
+            "get": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Index",
+                "operationId": "18036c9274998ae550f05be1f540f1e2",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Notification's Pagination Limit.",
+                        "required": false
+                    },
+                    {
+                        "name": "current_page",
+                        "in": "query",
+                        "description": "Notification's Pagination Current Page.",
+                        "required": false
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Notification's Pagination Order.",
+                        "required": false
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Notification's Pagination Filter.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/notifications/{notification}": {
+            "put": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Update",
+                "operationId": "70ee6d2252aa1b83b60db5c83da5bbcc",
+                "parameters": [
+                    {
+                        "name": "notification",
+                        "in": "path",
+                        "description": "Notification's Notification.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Destroy",
+                "operationId": "321998a1f9361cc768c18463b420d278",
+                "parameters": [
+                    {
+                        "name": "notification",
+                        "in": "path",
+                        "description": "Notification's Notification.",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/locales": {
+            "get": {
+                "tags": [
+                    "Locales"
+                ],
+                "summary": "Index",
+                "operationId": "1630b796f49b1ee54146e32ae73999e8",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Locales"
+                ],
+                "summary": "Update",
+                "operationId": "95dda7bce420c16acd6c67758e6cf9cd",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "description": "Locale's Code.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/menus": {
+            "get": {
+                "tags": [
+                    "Menus"
+                ],
+                "summary": "Index",
+                "operationId": "a21e79b903ce09752a26682c7fd5c50a",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Menus"
+                ],
+                "summary": "Update",
+                "operationId": "4ac8c307cdcd3f8830e83a4993363245",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "bar": {
+                                        "schema": {
+                                            "type": "string",
+                                            "enum": [
+                                                "headernavbar",
+                                                "sidenavbar"
+                                            ]
+                                        },
+                                        "description": "Menu's Bar.",
+                                        "type": "string"
+                                    },
+                                    "menu_from": {
+                                        "description": "Menu's Menu From.",
+                                        "type": "string"
+                                    },
+                                    "menu_to": {
+                                        "description": "Menu's Menu To.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Menus"
+                ],
+                "summary": "Store",
+                "operationId": "c1fdae0d59dd3ba18eb689181e20b135",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "bar": {
+                                        "schema": {
+                                            "type": "string",
+                                            "enum": [
+                                                "headernavbar",
+                                                "sidenavbar"
+                                            ]
+                                        },
+                                        "description": "Menu's Bar.",
+                                        "type": "string"
+                                    },
+                                    "menu": {
+                                        "description": "Menu's Menu.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/menus/{bar}/{menu}": {
+            "delete": {
+                "tags": [
+                    "Menus"
+                ],
+                "summary": "Destroy",
+                "operationId": "a603baf8a1e8a05b7a7c2866bf8c2b51",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "path",
+                        "description": "Menu's Bar.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "headernavbar",
+                                "sidenavbar"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "menu",
+                        "in": "path",
+                        "description": "Menu's Menu.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profiles": {
+            "get": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Index",
+                "operationId": "b375edcdbb14679c176a543e945656f5",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profiles/{variable}": {
+            "put": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Update",
+                "operationId": "ace522eea12c94615fb520af4337d578",
+                "parameters": [
+                    {
+                        "name": "variable",
+                        "in": "path",
+                        "description": "Profile's Variable.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Profile's Value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/settings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Index",
+                "operationId": "d89cb0b79864c32a3d7545fbc8dd5896",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/settings/{key}": {
+            "put": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Update",
+                "operationId": "3adfa3096915ab84bb3b3c75e9be0562",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Setting's Key.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Setting's Value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Destroy",
+                "operationId": "cc01a46489a335498d64216480620744",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "Setting's Value.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity."
+                    },
+                    "404": {
+                        "description": "Not Found."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
