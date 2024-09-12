@@ -69,3 +69,7 @@ Example: `npx nx run-many -t build lint test e2e cache`
 Example: `npx nx affected -t build lint test e2e cache`
 
 For more on pipeline configuration and task execution, visit [Nx Task Pipeline Management Configuration](https://nx.dev/concepts/task-pipeline-configuration).
+
+---
+
+[Summary](https://gitlab.com/-/snippets/2531765).
